@@ -13,19 +13,19 @@ func main() {
 
 	go func() {
 		defer wg.Done()
-		sensors.Temperature()
+		sensors.SensorsGeneral("temperature")
 
 	}()
 
 	go func() {
 		defer wg.Done()
-		sensors.Humidity()
+		sensors.SensorsGeneral("humidity")
 
 	}()
 
 	go func() {
 		defer wg.Done()
-		sensors.Ph()
+		sensors.SensorsGeneral("ph")
 
 	}()
 
