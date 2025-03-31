@@ -9,23 +9,17 @@ func main() {
 
 	var wg sync.WaitGroup
 
-	wg.Add(3)
+	wg.Add(2)
 
 	go func() {
 		defer wg.Done()
-		sensors.SensorsGeneral("temperature")
+		sensors.EnvironSensors()
 
 	}()
 
 	go func() {
 		defer wg.Done()
-		sensors.SensorsGeneral("humidity")
-
-	}()
-
-	go func() {
-		defer wg.Done()
-		sensors.SensorsGeneral("ph")
+		sensors.WaterSoilSensors()
 
 	}()
 
