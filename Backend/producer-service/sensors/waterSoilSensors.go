@@ -57,7 +57,7 @@ func WaterSoilSensors() {
 		msg.ControllerID = ControllerID
 		msg.Timestamp = time.Now()
 		msg.Ph = utils.RoundToTwoDecimalPlaces(rand.Float64() * 14)            // 0 - 14
-		msg.SoilMoisture = utils.RoundToTwoDecimalPlaces(rand.Float64() * 100) // 0 -100
+		msg.SoilMoisture = utils.RoundToTwoDecimalPlaces(rand.Float64() * 200) // 0 -200. Should be 0-100. This is to simulate error readings
 		msg.Turbidity = utils.RoundToTwoDecimalPlaces(rand.Float64() * 1000)   // 0 - 1000
 
 		msgbytes, err := json.Marshal(msg)

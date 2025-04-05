@@ -57,7 +57,7 @@ func EnvironSensors() {
 		controllerID := rand.Intn(5) // 0-4 for environ sensors. 5 - 9 for water and soil sensors
 		msg.ControllerID = controllerID
 		msg.Timestamp = time.Now()
-		msg.Temperature = utils.RoundToTwoDecimalPlaces(rand.Float64()*50 + 5) // 5- 55
+		msg.Temperature = utils.RoundToTwoDecimalPlaces(rand.Float64()*70 + 5) // 5- 75 To simulate error readings
 		msg.Humidity = utils.RoundToTwoDecimalPlaces(rand.Float64() * 100)     // 0- 100
 		msg.Pressure = utils.RoundToTwoDecimalPlaces(rand.Float64()*70 + 980)  //980-1050.0
 		msg.CO2 = utils.RoundToTwoDecimalPlaces(rand.Float64()*550 + 350)      //350-900.0
@@ -69,7 +69,7 @@ func EnvironSensors() {
 			continue
 		}
 
-		err = writer.WriteMessages(context.TODO(), kafka.Message{
+		err = writer.WriteMessages(context.Background(), kafka.Message{
 			Key:   []byte(strconv.Itoa(controllerID)),
 			Value: msgbytes,
 		})
