@@ -46,9 +46,17 @@ func EnvironConsumer() {
 			continue
 		}
 
+		// Clean data
+
 		if !sensor.IsValid() {
 			log.Printf("Invalid sensor data: %+v", sensor)
 			continue
+		} else {
+
+			// publish clean data to kafka
+
+			environProducer(&sensor)
+
 		}
 
 		fmt.Printf("Valid sensor data: %+v\n", sensor)

@@ -1,4 +1,4 @@
-package environ
+package watersoil
 
 import (
 	"consumer-service/models"
@@ -11,10 +11,10 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
-func environProducer(s *models.EnvironSensorMessage) {
+func waterSoilProducer(s *models.WaterSoilSensorMessage) {
 
 	broker := os.Getenv("KAFKA_BROKER")
-	topic := "environSensorsClean"
+	topic := "waterSoilSensorsClean"
 
 	_, err := kafka.DialLeader(context.Background(), "tcp", broker, topic, 0)
 

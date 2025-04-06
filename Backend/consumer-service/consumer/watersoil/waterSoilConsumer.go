@@ -26,7 +26,7 @@ func WaterSoilConsumer() {
 
 	defer reader.Close()
 
-	log.Println("Environ sensors consumer started. Waiting for messages...")
+	log.Println("Water soil sensors consumer started. Waiting for messages...")
 
 	for {
 
@@ -49,9 +49,10 @@ func WaterSoilConsumer() {
 		if !sensor.IsValid() {
 			log.Printf("Invalid sensor data: %+v", sensor)
 			continue
-		}
+		} else {
 
-		fmt.Printf("Valid sensor data: %+v\n", sensor)
+			waterSoilProducer(&sensor)
+		}
 
 	}
 
